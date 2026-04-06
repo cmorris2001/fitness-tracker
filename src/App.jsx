@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { supabase } from "./supabaseClient";
-import * as db from "./db";
+import * as db from "./Db";
 import Login from "./login";
 
 const TABS = ["Dashboard", "Meals", "Exercise", "Steps", "Body"];
