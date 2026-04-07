@@ -1,7 +1,6 @@
-// db.js
+// Db.js
 // ─────────────────────────────────────────────────────
 // Data access functions for all Supabase tables
-// Imports the shared Supabase client from supabaseClient.js
 // ─────────────────────────────────────────────────────
 
 import { supabase } from "./supabaseClient";
@@ -25,7 +24,7 @@ export async function getSettings(userId) {
     .from("user_settings")
     .select("*")
     .eq("user_id", userId)
-    .single();
+    .maybeSingle();
   if (!data) return null;
   return {
     calorieGoal: data.calorie_goal,
@@ -54,7 +53,6 @@ export async function getMeals(userId) {
     .select("*")
     .eq("user_id", userId)
     .order("date", { ascending: true });
-  // Group by date
   const grouped = {};
   (data || []).forEach(m => {
     const dk = m.date;
@@ -227,7 +225,6 @@ export async function addBodyPhoto(userId, date, photoUrl, bodyEntryId) {
   });
 }
 
-// Upload photo to Supabase Storage and return public URL
 export async function uploadPhoto(userId, file) {
   const ext = file.name?.split(".").pop() || "jpg";
   const path = `${userId}/${Date.now()}.${ext}`;
@@ -309,10 +306,8 @@ export async function updateChallengeWeek(challengeId, weekNumber, schedule) {
 }
 
 export async function startChallenge(challengeId, startDate) {
-  // Deactivate all challenges first
   const { data: ch } = await supabase.from("challenges").select("user_id").eq("id", challengeId).single();
   await supabase.from("challenges").update({ start_date: null, is_active: false }).eq("user_id", ch.user_id);
-  // Activate this one
   await supabase.from("challenges").update({ start_date: startDate, is_active: true }).eq("id", challengeId);
 }
 
