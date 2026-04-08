@@ -12,7 +12,8 @@ export default function BodyTab({ bodyEntries, updateBody, bodyPhotos, updatePho
   const [calGoalInput, setCalGoalInput] = useState(String(settings.calorieGoal));
   const [editWeightGoal, setEditWeightGoal] = useState(false);
   const [weightGoalInput, setWeightGoalInput] = useState(String(settings.weightGoal || ""));
-  const fileRef = useRef();
+  const photoRef = useRef();
+  const cameraRef = useRef();
 
   const activeMeasures = MEASUREMENT_OPTIONS.filter(m => settings.activeMeasurements.includes(m.key));
 
@@ -286,17 +287,23 @@ export default function BodyTab({ bodyEntries, updateBody, bodyPhotos, updatePho
               ))}
               <div className="input-group">
                 <label className="input-label">Progress Photo (optional)</label>
-                <div className="upload-area" onClick={() => fileRef.current?.click()}>
-                  {formPhoto ? (
+                {formPhoto ? (
+                  <div>
                     <div className="upload-area has-preview"><img src={formPhoto} alt="" /></div>
-                  ) : (
-                    <div style={{ padding: 16 }}>
-                      <div>{Icons.camera}</div>
-                      <div style={{ fontSize: 13, marginTop: 4 }}>Tap to upload photo</div>
-                    </div>
-                  )}
-                </div>
-                <input ref={fileRef} type="file" accept="image/*" capture="environment" style={{ display: "none" }} onChange={handlePhoto} />
+                    <button className="btn btn-secondary btn-sm" style={{ width: "100%", marginTop: 8 }} onClick={() => setFormPhoto(null)}>Remove Photo</button>
+                  </div>
+                ) : (
+                  <div style={{ display: "flex", gap: 8, flexDirection: "column" }}>
+                    <button className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }} onClick={() => photoRef.current?.click()}>
+                      ➕ Add Photo
+                    </button>
+                    <button className="btn btn-secondary" style={{ width: "100%", justifyContent: "center" }} onClick={() => cameraRef.current?.click()}>
+                      📷 Take Photo
+                    </button>
+                  </div>
+                )}
+                <input ref={photoRef} type="file" accept="image/*" style={{ display: "none" }} onChange={handlePhoto} />
+                <input ref={cameraRef} type="file" accept="image/*" capture="environment" style={{ display: "none" }} onChange={handlePhoto} />
               </div>
             </div>
             <div className="modal-actions">

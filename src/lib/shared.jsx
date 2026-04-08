@@ -7,19 +7,19 @@ export const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 export const MEASUREMENT_OPTIONS = [
   { key: "weight", label: "Weight", unit: "kg" },
-  { key: "stomach", label: "Stomach", unit: "cm" },
-  { key: "bicepL", label: "Bicep (L)", unit: "cm" },
-  { key: "bicepR", label: "Bicep (R)", unit: "cm" },
-  { key: "chest", label: "Chest", unit: "cm" },
-  { key: "thighL", label: "Thigh (L)", unit: "cm" },
-  { key: "thighR", label: "Thigh (R)", unit: "cm" },
-  { key: "waist", label: "Waist", unit: "cm" },
-  { key: "hips", label: "Hips", unit: "cm" },
-  { key: "neck", label: "Neck", unit: "cm" },
-  { key: "forearmL", label: "Forearm (L)", unit: "cm" },
-  { key: "forearmR", label: "Forearm (R)", unit: "cm" },
-  { key: "calfL", label: "Calf (L)", unit: "cm" },
-  { key: "calfR", label: "Calf (R)", unit: "cm" },
+  { key: "stomach", label: "Stomach", unit: "in" },
+  { key: "bicepL", label: "Bicep (L)", unit: "in" },
+  { key: "bicepR", label: "Bicep (R)", unit: "in" },
+  { key: "chest", label: "Chest", unit: "in" },
+  { key: "thighL", label: "Thigh (L)", unit: "in" },
+  { key: "thighR", label: "Thigh (R)", unit: "in" },
+  { key: "waist", label: "Waist", unit: "in" },
+  { key: "hips", label: "Hips", unit: "in" },
+  { key: "neck", label: "Neck", unit: "in" },
+  { key: "forearmL", label: "Forearm (L)", unit: "in" },
+  { key: "forearmR", label: "Forearm (R)", unit: "in" },
+  { key: "calfL", label: "Calf (L)", unit: "in" },
+  { key: "calfR", label: "Calf (R)", unit: "in" },
 ];
 
 export const MEAL_TYPES = [
@@ -130,11 +130,11 @@ export const css = `
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@700;800&display=swap');
 
 :root {
-  --bg: #0a0a0c;
-  --surface: #141418;
-  --surface2: #1c1c22;
-  --surface3: #24242c;
-  --border: #2a2a34;
+  --bg: #1a1a2e;
+  --surface: #2a2a3e;
+  --surface2: #2d2d3f;
+  --surface3: #35354a;
+  --border: #3a3a4a;
   --text: #eeeef0;
   --text2: #9898a4;
   --text3: #626270;
